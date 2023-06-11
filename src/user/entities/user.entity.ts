@@ -1,9 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+  BaseEntity,
+} from 'typeorm';
 import encry from '../../utils/crypto';
 import * as crypto from 'crypto';
 
 @Entity('user')
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: number; // 标记为主键，值自动生成
   @BeforeInsert()

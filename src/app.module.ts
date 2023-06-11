@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { HelloModule } from './modules/hello/hello.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
@@ -16,7 +15,6 @@ import { AuthModule } from './auth/auth.module';
       database: 'easyestadmin', //数据库名
       synchronize: true, //是否自动同步实体文件,生产环境建议关闭
     }),
-    HelloModule,
     UserModule,
     AuthModule,
   ],
