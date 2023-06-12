@@ -25,7 +25,12 @@ export class UserService {
     try {
       console.log(createUserDto);
 
-      const newUser = await this.userRepository.create(createUserDto);
+      const newUser = await this.userRepository.create({
+        ...createUserDto,
+        avatar: `https://api.multiavatar.com/Binx%${Math.floor(
+          Math.random() * 50000,
+        )}.png`,
+      });
       console.log(newUser);
       await this.userRepository.save(newUser);
       return '注册成功';
@@ -34,8 +39,11 @@ export class UserService {
     }
   }
 
-  findAll() {
-    return `This action returns all user`;
+  async findAll() {
+    const users = await this.userRepository.find();
+    console.log(users);
+
+    return users;
   }
 
   async findOne(username: string) {
